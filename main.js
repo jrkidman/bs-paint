@@ -49,6 +49,83 @@ while (count <= gridWidth * gridWidth) {
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
+// color palette buttons selector an event listener
+let colorPalette = document.querySelectorAll(".palette div");
+console.log(colorPalette);
+
+// brush color selector and event listener
+let brushColor = document.querySelector(".current-brush");
+
+
+for (let color of colorPalette) {
+  color.addEventListener("click", function () {
+    console.log("colorPalette clicked")
+    brushColor.classList.replace(brushColor.classList[1], color.classList[1]);
+  })
+}
+
+
+
+let clicked = false;
+
+let mouseUp = document.addEventListener("mouseup", function () {
+  clicked = false;
+})
+
+let mouseDown = document.addEventListener("mousedown", function () {
+  clicked = true;
+})
+
+
+
+// canvas selector and event listener
+let canvas = document.querySelectorAll(".canvas div");
+
+// for mouseenter
+for (let square of canvas) {
+
+  square.addEventListener("click", function () {
+    square.classList.replace(square.classList[1], brushColor.classList[1]);
+    // clicked = false;
+  })
+
+
+  square.addEventListener("mouseenter", function () {
+    // console.log("square clicked");
+    if (clicked === true) {
+
+      square.classList.replace(square.classList[1], brushColor.classList[1]);
+    }
+  })
+}
+
+let darkModeButton = document.querySelector(".dark-mode-button");
+let body = document.querySelector("body");
+
+const changeToDark = darkModeButton.addEventListener("click", function(){
+  body.classList.toggle("dark-mode");
+})
+
+
+
+
+
+
+
+// for square being clicked
+// for (let square of canvas){
+//   square.addEventListener("click", function(){
+//     // console.log("square clicked");
+//     square.classList.replace(square.classList[1], brushColor.classList[1]);
+
+//   } )
+// }
+
+
+
+
+
+
 
 
 /****************************
@@ -70,4 +147,4 @@ while (count <= gridWidth * gridWidth) {
 // Now: wiring up our event listeners to our html node elements.
 // You'll need to add the appropriate event listener for each
 // square and for each palette color from the functions you
-// wrote above.
+// wrote above
